@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "935336963971",
+    "project_id": "graduactionproject-kidscontrol",
+    "storage_bucket": "graduactionproject-kidscontrol.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:935336963971:android:763dcc74c43d89280090b6",
+        "android_client_info": {
+          "package_name": "com.example.graduation1"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "935336963971-7gb6hojli3u244auuht6juobotucte5v.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.graduation1",
+            "certificate_hash": "2d48c822c8e2e2886f8d00c30df65f660c7637ee"
+          }
+        },
+        {
+          "client_id": "935336963971-lmldmu04h6uoeqn8hp9bqfgaj4n5mofh.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAiEt1kKOLgKUs5YzS6ojZQy3yKuk8xb1s"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "935336963971-lmldmu04h6uoeqn8hp9bqfgaj4n5mofh.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
