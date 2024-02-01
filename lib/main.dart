@@ -1,6 +1,8 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:graduation1/modules/kids_control/on_boarding/onboarding_screen.dart';
+import 'modules/kids_control/homeexample.dart';
 
 
 void main()async {
@@ -15,9 +17,12 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp(
+    return MaterialApp(
       debugShowCheckedModeBanner: false,
-      home:Splach(),
+      home:(FirebaseAuth.instance.currentUser != null &&
+          FirebaseAuth.instance.currentUser!.emailVerified)
+          ? const HomePage()
+          : const Splach(),
     );
   }
 }
