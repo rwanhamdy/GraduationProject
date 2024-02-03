@@ -3,6 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:graduation1/shared/styles/colors.dart';
 
+import 'login_screen.dart';
+
 class ForgetPassword extends StatefulWidget {
   const ForgetPassword({super.key});
 
@@ -22,67 +24,64 @@ class _ForgetPasswordState extends State<ForgetPassword> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(),
-      body: Container(
-        width: double.infinity,
-        height: double.infinity,
-        decoration: BoxDecoration(
-          image: DecorationImage(
-            image: AssetImage(
-              "assets/images/resetback.png",
-            ),
-            fit: BoxFit.cover,
-            opacity: 0.4,
-          ),
-        ),
+      body: SingleChildScrollView(
         child: Form(
           key: formkey,
-          child: Center(
-            child: Padding(
-              padding: const EdgeInsets.all(16.0),
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Padding(
-                    padding: const EdgeInsets.all(12.0),
-                    child: SafeArea(
-                        child: Text(
-                            'Reset Your Password',
-                            style: TextStyle(
-                              fontSize: 35,
-                              fontWeight: FontWeight.bold,
-                              color: defaultColor,
-                            ),
-                        ),
-                    ),
+          child: Padding(
+            padding: const EdgeInsets.all(16.0),
+            child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(
+                  'Reset Your',
+                  style: TextStyle(
+                    fontSize: 35,
+                    fontWeight: FontWeight.w900,
+                    color: defaultColor,
                   ),
-                  SizedBox(height: 64,),
-                  TextFormField(
-                    controller: emailController,
-                    keyboardType: TextInputType.emailAddress,
-                    validator: (value){
-                      if(value!.isEmpty){
-                        return 'The EmailAddress Must Contain @';
-                      }
-                    },
-                    onFieldSubmitted: (String value) {
-                      print(value);
-                    },
-                    onChanged: (String value) {
-                      print(value);
-                    },
-                    decoration: InputDecoration(
-                      prefixIcon: Icon(
-                        Icons.email_outlined,
-                      ),
-                      labelText: 'Email',
-                      hintText: ' enter your email',
-                      border: OutlineInputBorder(),
-                    ),
+                ),
+                Text(
+                  'Password',
+                  style: TextStyle(
+                    fontSize: 35,
+                    fontWeight: FontWeight.w900,
+                    color: defaultColor,
                   ),
-                  SizedBox(height: 35,),
-                  Container(
-                    width: 200,
-                    height: 60,
+                ),
+                Center(
+                  child: Container(
+                      height: 220,
+                      child: Image.asset("assets/images/Reset password-rafiki.png")),
+                ),
+                SizedBox(height: 64,),
+                TextFormField(
+                  controller: emailController,
+                  keyboardType: TextInputType.emailAddress,
+                  validator: (value){
+                    if(value!.isEmpty){
+                      return 'The EmailAddress Must Contain @';
+                    }
+                  },
+                  onFieldSubmitted: (String value) {
+                    print(value);
+                  },
+                  onChanged: (String value) {
+                    print(value);
+                  },
+                  decoration: InputDecoration(
+                    prefixIcon: Icon(
+                      Icons.email_outlined,
+                    ),
+                    labelText: 'Email',
+                    hintText: ' enter your email',
+                    border: OutlineInputBorder(),
+                  ),
+                ),
+                SizedBox(height: 35,),
+                Center(
+                  child: Container(
+                    width: 300,
+                    height: 43,
                     decoration:  BoxDecoration(
                       color: defaultColor,
                       borderRadius: BorderRadius.circular(10),
@@ -101,8 +100,8 @@ class _ForgetPasswordState extends State<ForgetPassword> {
                       },
                     ),
                   ),
-                ],
-              ),
+                ),
+              ],
             ),
           ),
         ),
@@ -124,6 +123,7 @@ void _ForgetPasswordSend()async {
             textColor: Colors.white,
             fontSize: 16.0
         );
+        Navigator.of(context).pushAndRemoveUntil(MaterialPageRoute(builder: (context)=>  LoginScreen(),) , (route) => false);
     }
 }
 

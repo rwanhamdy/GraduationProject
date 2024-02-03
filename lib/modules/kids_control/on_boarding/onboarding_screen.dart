@@ -142,6 +142,7 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
                       style: TextStyle(
                         fontSize: 25,
                         color:Colors.black,
+                        fontWeight: FontWeight.w800,
                         fontFamily: 'Default',
                       ),
                     ),
@@ -170,13 +171,13 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
                   child: const Text("Continue",
                     style: TextStyle(
                       fontSize: 20,
+                      fontWeight: FontWeight.w800,
                       color: Colors.white,
                       fontFamily: 'Default',
                     ),
                   ),
                 ),
               ),
-
             ],
           ),
         ],

@@ -19,9 +19,10 @@ class LoginScreen extends StatefulWidget {
 }
 
 class _LoginScreenState extends State<LoginScreen> {
+
+
+
     var formkey = GlobalKey<FormState>();
-
-
     TextEditingController emailController = TextEditingController();
     TextEditingController passwordController = TextEditingController();
     bool _IsShow = true;
@@ -164,8 +165,8 @@ class _LoginScreenState extends State<LoginScreen> {
                       height: 40,
                     ),
                     Container(
-                      width: 200,
-                      height: 60,
+                      width: 300,
+                      height: 43,
                       decoration:  BoxDecoration(
                         color: defaultColor,
                         borderRadius: BorderRadius.circular(10),
@@ -311,6 +312,10 @@ void _signInWithGoogle() async {
 
     // Obtain the auth details from the request
     final GoogleSignInAuthentication? googleAuth = await googleUser?.authentication;
+
+    if(googleUser == null){
+    return;
+    }
 
     // Create a new credential
     final credential = GoogleAuthProvider.credential(

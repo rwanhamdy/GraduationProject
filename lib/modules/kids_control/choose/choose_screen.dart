@@ -64,6 +64,7 @@ class ChooseScreen extends StatelessWidget {
                           style: TextStyle(
                             color: Colors.white,
                             fontSize: 25,
+                            fontWeight: FontWeight.w500,
                             fontFamily: 'Default',
                           ),
                         ),
@@ -106,6 +107,7 @@ class ChooseScreen extends StatelessWidget {
                             color: Colors.white,
                             fontSize: 25,
                             fontFamily: 'Default',
+                            fontWeight: FontWeight.w500,
                           ),
                         ),
                       ),

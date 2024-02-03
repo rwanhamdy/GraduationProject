@@ -2,6 +2,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:graduation1/main.dart';
+import 'package:graduation1/modules/kids_control/login/login_screen.dart';
 import '../../shared/componants/componants.dart';
 
 class HomePage extends StatefulWidget {
@@ -20,7 +21,7 @@ class _HomePageState extends State<HomePage> {
           IconButton(
               onPressed: ()async {
                 await FirebaseAuth.instance.signOut();
-                navigateTo(context, Splach(),);
+                navigateTo(context, LoginScreen(),);
               },
               icon: Icon(FontAwesomeIcons.signOut),
           ),

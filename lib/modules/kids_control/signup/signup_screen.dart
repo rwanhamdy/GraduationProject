@@ -1,6 +1,8 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_facebook_auth/flutter_facebook_auth.dart';
 import 'package:fluttertoast/fluttertoast.dart';
+import 'package:google_sign_in/google_sign_in.dart';
 import 'package:graduation1/modules/kids_control/homeexample.dart';
 import 'package:graduation1/modules/kids_control/login/login_screen.dart';
 import 'package:graduation1/shared/styles/colors.dart';
@@ -189,8 +191,8 @@ class _SignUpScreenState extends State<SignUpScreen> {
                   height: 50,
                 ),
                 Container(
-                  width: 200,
-                  height: 60,
+                  width: 300,
+                  height: 43,
                   decoration:  BoxDecoration(
                     color: defaultColor,
                     borderRadius: BorderRadius.circular(10),
@@ -216,6 +218,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                   children: [
                     IconButton(
                         onPressed: () {
+                          _signInWithFacebook();
                         },
                         icon:
                         IconIcons.facebook(
@@ -226,6 +229,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                     SizedBox(width: 12,),
                     TextButton(
                       onPressed: () {
+                        _signInWithGoogle();
                       },
                       child: Image.asset("assets/images/GoogleIcon.png"),
                     ),
@@ -239,7 +243,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
     );
   }
 
-  void _SignupAuth()async {
+void _SignupAuth()async {
     if(formkey.currentState!.validate()){
       try {
         await FirebaseAuth.instance.createUserWithEmailAndPassword(
@@ -286,4 +290,35 @@ class _SignUpScreenState extends State<SignUpScreen> {
       }
     }
   }
+
+void _signInWithGoogle() async {
+      // Trigger the authentication flow
+      final GoogleSignInAccount? googleUser = await GoogleSignIn().signIn();
+
+      // Obtain the auth details from the request
+      final GoogleSignInAuthentication? googleAuth = await googleUser?.authentication;
+
+      // Create a new credential
+      final credential = GoogleAuthProvider.credential(
+        accessToken: googleAuth?.accessToken,
+        idToken: googleAuth?.idToken,
+      );
+
+      // Once signed in, return the UserCredential
+      await FirebaseAuth.instance.signInWithCredential(credential);
+      Navigator.of(context).pushAndRemoveUntil(MaterialPageRoute(builder: (context) => HomePage()) ,(route) => false,);
+    }
+
+void _signInWithFacebook() async {
+      // Trigger the sign-in flow
+      final LoginResult loginResult = await FacebookAuth.instance.login();
+
+      // Create a credential from the access token
+      final OAuthCredential facebookAuthCredential = FacebookAuthProvider.credential(loginResult.accessToken!.token);
+
+      // Once signed in, return the UserCredential
+      await FirebaseAuth.instance.signInWithCredential(facebookAuthCredential);
+
+      Navigator.of(context).pushAndRemoveUntil(MaterialPageRoute(builder: (context) => HomePage()) ,(route) => false,);
+    }
 }

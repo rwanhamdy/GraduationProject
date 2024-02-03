@@ -1,13 +1,145 @@
 import 'package:flutter/material.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 
-class ChildSideScreen extends StatelessWidget {
+import '../../../shared/styles/colors.dart';
+
+class ChildSideScreen extends StatefulWidget {
   const ChildSideScreen({super.key});
 
   @override
+  State<ChildSideScreen> createState() => _ChildSideScreenState();
+}
+
+class _ChildSideScreenState extends State<ChildSideScreen> {
+
+  var formkey = GlobalKey<FormState>();
+  TextEditingController usernameController = TextEditingController();
+  TextEditingController idController = TextEditingController();
+
+
+  @override
   Widget build(BuildContext context) {
+
     return Scaffold(
       appBar: AppBar(
-        title: Text('ChildSideScreen'),
+        backgroundColor: defaultColor,
+        title: Text(
+            'Kids Side',
+          style: TextStyle(
+            fontFamily: 'Default',
+            fontSize: 30,
+            fontWeight: FontWeight.w700,
+            color: Colors.white
+          ),
+        ),
+        centerTitle: true,
+      ),
+      body: Center(
+        child: Padding(
+          padding: const EdgeInsets.all(8.0),
+          child: Container(
+            width: double.infinity,
+            height: 415,
+            decoration: BoxDecoration(color: Color.fromRGBO(217, 217, 217, 0.42),borderRadius: BorderRadius.circular(50),),
+            child: Form(
+              key: formkey,
+              child: Padding(
+                padding: const EdgeInsets.all(12.0),
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    TextFormField(
+                      controller: usernameController,
+                      keyboardType: TextInputType.visiblePassword,
+                      validator: (value){
+                        if(value!.isEmpty){
+                          return 'The Password Must Not Be Empty';
+                        }
+                      },
+                      onFieldSubmitted: (String value) {
+                        print(value);
+                      },
+                      onChanged: (String value) {
+                        print(value);
+                      },
+                      decoration: InputDecoration(
+                        labelText: 'Name',
+                        hintText: '  User Name',
+                        border: OutlineInputBorder(),
+                      ),
+                    ),
+                    SizedBox(height: 30,),
+                    TextFormField(
+                      controller: idController,
+                      keyboardType: TextInputType.visiblePassword,
+                      validator: (value){
+                        if(value!.isEmpty){
+                          return 'The Password Must Not Be Empty';
+                        }
+                      },
+                      onFieldSubmitted: (String value) {
+                        print(value);
+                      },
+                      onChanged: (String value) {
+                        print(value);
+                      },
+                      decoration: InputDecoration(
+                        labelText: 'ID',
+                        hintText: ' Child ID',
+                        border: OutlineInputBorder(),
+                      ),
+                    ),
+                    SizedBox(height: 24,),
+                    Container(
+                      width: 300,
+                      height: 43,
+                      decoration:  BoxDecoration(
+                        color: defaultColor,
+                        borderRadius: BorderRadius.circular(10),
+                      ),
+                      child: MaterialButton(
+                        onPressed: (){
+                          if(formkey.currentState!.validate()){
+                            print(usernameController.text);
+                            print(idController.text);
+                            Fluttertoast.showToast(
+                                msg: "Welcome ${usernameController.text}",
+                                toastLength: Toast.LENGTH_SHORT,
+                                gravity: ToastGravity.BOTTOM,
+                                timeInSecForIosWeb: 1,
+                                backgroundColor: defaultColor,
+                                textColor: Colors.white,
+                                fontSize: 16.0
+                            );
+                          }
+                          else{
+                            Fluttertoast.showToast(
+                                msg: "validate Require",
+                                toastLength: Toast.LENGTH_SHORT,
+                                gravity: ToastGravity.BOTTOM,
+                                timeInSecForIosWeb: 1,
+                                backgroundColor: Colors.red,
+                                textColor: Colors.white,
+                                fontSize: 16.0
+                            );
+                          }
+                        },
+                        child: Text(
+                          'SignIn',
+                          style: TextStyle(
+                            color: Colors.white,
+                            fontSize: 30,
+                            fontWeight: FontWeight.bold,
+                        ),
+                       ),
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+            ),
+          ),
+        ),
       ),
     );
   }
