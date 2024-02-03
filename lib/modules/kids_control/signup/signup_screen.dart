@@ -48,6 +48,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                         fontSize: 30,
                         fontWeight: FontWeight.bold,
                         color: defaultColor,
+                        fontFamily: 'Default',
                       ),
                     ),
                   ],
@@ -60,7 +61,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                   keyboardType: TextInputType.emailAddress,
                   validator: (value){
                     if(value!.isEmpty){
-                      return 'The emailController Must Not Be Empty';
+                      return 'The EmailAddress Must Contain @';
                     }
                   },
                   onFieldSubmitted: ( String value){
@@ -113,7 +114,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                   keyboardType: TextInputType.visiblePassword,
                   validator: (value){
                     if(value!.isEmpty){
-                      return 'The emailController Must Not Be Empty';
+                      return 'The Password Must Not Be Empty';
                     }
                   },
                   onFieldSubmitted: ( String value){
@@ -153,7 +154,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                   keyboardType: TextInputType.visiblePassword,
                   validator: (value){
                     if(value!.isEmpty){
-                      return 'The emailController Must Not Be Empty';
+                      return 'The Password Must Not Be Empty';
                     }
                   },
                   onFieldSubmitted: ( String value){
@@ -201,7 +202,10 @@ class _SignUpScreenState extends State<SignUpScreen> {
                     child: Text('SignUp',style: TextStyle(
                         color: Colors.white,
                         fontSize: 30,
-                        fontWeight: FontWeight.bold),),
+                        fontWeight: FontWeight.bold,
+                        fontFamily: 'Default',
+                    ),
+                    ),
                   ),
                 ),
                 SizedBox (

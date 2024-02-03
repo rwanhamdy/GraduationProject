@@ -57,11 +57,9 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
               setState(() {
                 isLast = true;
               });
-
             }
           else{
             isLast = false;
-
           }
         },
         itemBuilder: (context, index) => builderBroadingItem(boarding[index]),
@@ -93,7 +91,7 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
                    color: defaultColor,
                    fontWeight: FontWeight.bold,
                    fontSize: 35,
-
+                   fontFamily: 'Default',
                  ),
                ),
                Text('${model.title2}',
@@ -101,10 +99,9 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
                    color: defaultColor,
                    fontWeight: FontWeight.bold,
                    fontSize: 35,
-
+                   fontFamily: 'Default',
                  ),
                ),
-
              ],
            ),
           ),
@@ -144,7 +141,8 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
                     child: const Text("skip",
                       style: TextStyle(
                         fontSize: 25,
-                          color:Colors.black,
+                        color:Colors.black,
+                        fontFamily: 'Default',
                       ),
                     ),
                 ),
@@ -165,14 +163,15 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
                         broadController.nextPage(
                           duration:const Duration(milliseconds: 750,
                           ),
-                          curve:Curves.easeInToLinear,
+                          curve:Curves.fastEaseInToSlowEaseOut,
                         );
                       }
                 },
-                  child: const Text("continue",
+                  child: const Text("Continue",
                     style: TextStyle(
                       fontSize: 20,
                       color: Colors.white,
+                      fontFamily: 'Default',
                     ),
                   ),
                 ),

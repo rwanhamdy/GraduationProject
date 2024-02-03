@@ -27,7 +27,13 @@ class _HomePageState extends State<HomePage> {
         ],
       ),
       body: Center(
-        child: Text('You In HomePage'),
+        child: Text(
+          'You In HomePage',
+          style: TextStyle(
+              fontSize: 35,
+              fontFamily: 'Default',
+          ),
+        ),
       ),
     );
   }

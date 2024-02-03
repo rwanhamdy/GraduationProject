@@ -57,6 +57,7 @@ class _LoginScreenState extends State<LoginScreen> {
                         color: defaultColor,
                         fontSize: 30,
                         fontWeight: FontWeight.bold,
+                        fontFamily: 'Default',
                       ),
                     ),
                     Text(
@@ -65,6 +66,7 @@ class _LoginScreenState extends State<LoginScreen> {
                         fontSize: 30,
                         color: defaultColor,
                         fontWeight: FontWeight.bold,
+                        fontFamily: 'Default',
                       ),
                     ),
                   ],
@@ -85,7 +87,7 @@ class _LoginScreenState extends State<LoginScreen> {
                       keyboardType: TextInputType.emailAddress,
                       validator: (value){
                         if(value!.isEmpty){
-                          return 'The EmailAddress Must Not Be Empty';
+                          return 'The EmailAddress Must Contain @';
                         }
                       },
                       onFieldSubmitted: (String value) {
@@ -146,13 +148,13 @@ class _LoginScreenState extends State<LoginScreen> {
                       children: [
                         TextButton(
                           onPressed: () {
-                            //Forget Password Screen :) -------------------------
                             Navigator.of(context).push(MaterialPageRoute(builder: (context)=> ForgetPassword()));
                           },
                           child: Text(
                             " Forget Password ?",
                             style: TextStyle(
-                                color: Colors.black
+                                color: Colors.black,
+                                fontFamily: 'Default',
                             ),
                           ),
                         ),
@@ -245,7 +247,7 @@ void _SigninAuth() async {
         );
         if(credential.user!.emailVerified){
           Fluttertoast.showToast(
-              msg: "Done :).",
+              msg: "Welcome To KidsControl Application :)",
               toastLength: Toast.LENGTH_SHORT,
               gravity: ToastGravity.BOTTOM,
               timeInSecForIosWeb: 1,
@@ -253,7 +255,7 @@ void _SigninAuth() async {
               textColor: Colors.white,
               fontSize: 16.0
           );
-          navigateTo(context, HomePage(),);
+          Navigator.of(context).pushAndRemoveUntil(MaterialPageRoute(builder: (context) => HomePage()) ,(route) => false,);
         }else{
           Fluttertoast.showToast(
               msg: "Email Address Must Verified..",
@@ -318,7 +320,7 @@ void _signInWithGoogle() async {
 
     // Once signed in, return the UserCredential
      await FirebaseAuth.instance.signInWithCredential(credential);
-    Navigator.of(context).push(MaterialPageRoute(builder: (context) => HomePage()));
+    Navigator.of(context).pushAndRemoveUntil(MaterialPageRoute(builder: (context) => HomePage()) ,(route) => false,);
   }
 
 void _signInWithFacebook() async {
@@ -331,6 +333,6 @@ void _signInWithFacebook() async {
     // Once signed in, return the UserCredential
      await FirebaseAuth.instance.signInWithCredential(facebookAuthCredential);
 
-    Navigator.of(context).push(MaterialPageRoute(builder: (context) => HomePage()));
+    Navigator.of(context).pushAndRemoveUntil(MaterialPageRoute(builder: (context) => HomePage()) ,(route) => false,);
   }
 }

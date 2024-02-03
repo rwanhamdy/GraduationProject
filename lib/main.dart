@@ -6,9 +6,9 @@ import 'modules/kids_control/homeexample.dart';
 
 
 void main()async {
-  runApp(const MyApp());
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();
+  runApp(const MyApp());
 }
 
 class MyApp extends StatelessWidget {
@@ -42,7 +42,6 @@ class _SplachState extends State<Splach> {
       Navigator.pushReplacement(context,MaterialPageRoute(builder: (context)=> const OnBoardingScreen()));
     }
     );
-    
   }
   @override
   Widget build(BuildContext context) {
@@ -60,11 +59,12 @@ class _SplachState extends State<Splach> {
             const SizedBox(
               height: 20,
             ),
-            const Text("Kids Protect",
+            const Text("Kids Control",
             style: TextStyle(
               color: Colors.black,
               fontSize: 35,
               fontWeight:FontWeight.bold,
+              fontFamily: 'Splash',
             ),
             ),
 

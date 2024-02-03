@@ -16,7 +16,7 @@ class ChooseScreen extends StatelessWidget {
           child: Column(
             children: [
               SizedBox(
-                height: 40,
+                height: 30,
               ),
               Center(
                 child: Column(
@@ -27,6 +27,7 @@ class ChooseScreen extends StatelessWidget {
                         color: defaultColor,
                         fontSize: 35,
                         fontWeight: FontWeight.bold,
+                        fontFamily: 'Default',
                       ),
                     ),
                     Text(
@@ -34,10 +35,10 @@ class ChooseScreen extends StatelessWidget {
                       style: TextStyle(
                         color: defaultColor,
                         fontSize: 35,
-                        fontWeight: FontWeight.bold
+                        fontWeight: FontWeight.bold,
+                        fontFamily: 'Default',
                     ),
                     ),
-        
                   ],
                 ),
               ),
@@ -63,6 +64,7 @@ class ChooseScreen extends StatelessWidget {
                           style: TextStyle(
                             color: Colors.white,
                             fontSize: 25,
+                            fontFamily: 'Default',
                           ),
                         ),
                       ),
@@ -72,20 +74,13 @@ class ChooseScreen extends StatelessWidget {
                         decoration: BoxDecoration(
                           borderRadius: BorderRadius.circular(10),
                           image: DecorationImage(
-                            image: AssetImage("assets/images/choose1.jpg",
-                                ),
+                            image: AssetImage("assets/images/choose1.jpg",),
                             fit: BoxFit.cover,
                           ),
-        
                         ),
                       ),
-        
-        
                     ],
                   ),
-        
-        
-        
                 ),
               ),
               SizedBox(
@@ -110,6 +105,7 @@ class ChooseScreen extends StatelessWidget {
                           style: TextStyle(
                             color: Colors.white,
                             fontSize: 25,
+                            fontFamily: 'Default',
                           ),
                         ),
                       ),

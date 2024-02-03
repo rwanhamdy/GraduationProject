@@ -21,6 +21,7 @@ class _ForgetPasswordState extends State<ForgetPassword> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(),
       body: Container(
         width: double.infinity,
         height: double.infinity,
@@ -60,7 +61,7 @@ class _ForgetPasswordState extends State<ForgetPassword> {
                     keyboardType: TextInputType.emailAddress,
                     validator: (value){
                       if(value!.isEmpty){
-                        return 'The EmailAddress Must Not Be Empty';
+                        return 'The EmailAddress Must Contain @';
                       }
                     },
                     onFieldSubmitted: (String value) {
@@ -111,16 +112,19 @@ class _ForgetPasswordState extends State<ForgetPassword> {
 
 
 void _ForgetPasswordSend()async {
-    await FirebaseAuth.instance.sendPasswordResetEmail(email: emailController.text.trim());
-    Fluttertoast.showToast(
-        msg: "Done! ,Check Your Email :).",
-        toastLength: Toast.LENGTH_SHORT,
-        gravity: ToastGravity.BOTTOM,
-        timeInSecForIosWeb: 1,
-        backgroundColor: defaultColor,
-        textColor: Colors.white,
-        fontSize: 16.0
-    );
+    if(formkey.currentState!.validate()) {
+        await FirebaseAuth.instance.sendPasswordResetEmail(
+            email: emailController.text.trim());
+        Fluttertoast.showToast(
+            msg: "Done! ,Check Your Email :).",
+            toastLength: Toast.LENGTH_SHORT,
+            gravity: ToastGravity.BOTTOM,
+            timeInSecForIosWeb: 1,
+            backgroundColor: defaultColor,
+            textColor: Colors.white,
+            fontSize: 16.0
+        );
+    }
 }
 
 }
