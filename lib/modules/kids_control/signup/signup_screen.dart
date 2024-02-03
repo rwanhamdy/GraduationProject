@@ -47,6 +47,12 @@ class _SignUpScreenState extends State<SignUpScreen> {
                     Text(
                       "Sign Up",
                       style: TextStyle(
+                        shadows: [
+                          Shadow(
+                            color: Colors.black38,
+                            offset: Offset(2.0, 2.0),
+                          ),
+                        ],
                         fontSize: 30,
                         fontWeight: FontWeight.bold,
                         color: defaultColor,
@@ -100,7 +106,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                   },
                   decoration: InputDecoration(
                     prefixIcon: Icon(
-                        Icons.accessibility
+                        Icons.person
                     ),
                     labelText: 'Name',
                     hintText: ' User Name',
@@ -201,7 +207,9 @@ class _SignUpScreenState extends State<SignUpScreen> {
                     onPressed: (){
                       _SignupAuth();
                     },
-                    child: Text('SignUp',style: TextStyle(
+                    child: Text(
+                      'SignUp',
+                      style: TextStyle(
                         color: Colors.white,
                         fontSize: 30,
                         fontWeight: FontWeight.bold,

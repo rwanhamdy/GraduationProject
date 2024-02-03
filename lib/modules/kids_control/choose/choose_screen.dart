@@ -69,14 +69,15 @@ class ChooseScreen extends StatelessWidget {
                           ),
                         ),
                       ),
+                      SizedBox(height: 3,),
                       Container(
-                        width: 285,
+                        width: 250,
                         height: 200,
                         decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(10),
+                          borderRadius: BorderRadius.circular(16),
                           image: DecorationImage(
                             image: AssetImage("assets/images/choose1.jpg",),
-                            fit: BoxFit.cover,
+                            fit: BoxFit.fill,
                           ),
                         ),
                       ),
@@ -111,26 +112,21 @@ class ChooseScreen extends StatelessWidget {
                           ),
                         ),
                       ),
+                      SizedBox(height: 3,),
                       Container(
-                        width: 285,
+                        width: 250,
                         height: 200,
                         decoration: BoxDecoration(
                           borderRadius: BorderRadius.circular(10),
                           image: DecorationImage(
                             image: AssetImage("assets/images/choose2.jpg",
                             ),
-                            fit: BoxFit.cover,
+                            fit: BoxFit.fill,
                           ),
-        
                         ),
                       ),
-        
-        
                     ],
                   ),
-        
-        
-        
                 ),
               ),
             ],

@@ -138,7 +138,7 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
                   navigateAndFinish(context, const ChooseScreen(),);
 
                 },
-                    child: const Text("skip",
+                    child: const Text("Skip",
                       style: TextStyle(
                         fontSize: 25,
                         color:Colors.black,

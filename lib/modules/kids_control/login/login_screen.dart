@@ -55,6 +55,12 @@ class _LoginScreenState extends State<LoginScreen> {
                     Text(
                       "Sign In",
                       style: TextStyle(
+                        shadows: [
+                          Shadow(
+                            color: Colors.white,
+                            offset: Offset(1.0, 1.0),
+                          ),
+                        ],
                         color: defaultColor,
                         fontSize: 30,
                         fontWeight: FontWeight.bold,
@@ -64,6 +70,12 @@ class _LoginScreenState extends State<LoginScreen> {
                     Text(
                       "     Now!",
                       style: TextStyle(
+                        shadows: [
+                          Shadow(
+                            color: Colors.white,
+                            offset: Offset(1.0, 1.0),
+                          ),
+                        ],
                         fontSize: 30,
                         color: defaultColor,
                         fontWeight: FontWeight.bold,
