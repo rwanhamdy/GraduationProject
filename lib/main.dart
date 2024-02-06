@@ -65,7 +65,7 @@ class _SplachState extends State<Splach> {
               color: Colors.black,
               fontSize: 35,
               fontWeight:FontWeight.bold,
-              fontFamily: 'Splash',
+              fontFamily: 'Default',
             ),
             ),
 

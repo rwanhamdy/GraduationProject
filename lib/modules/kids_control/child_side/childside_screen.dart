@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
-
 import '../../../shared/styles/colors.dart';
 
 class ChildSideScreen extends StatefulWidget {
@@ -24,12 +23,12 @@ class _ChildSideScreenState extends State<ChildSideScreen> {
       appBar: AppBar(
         backgroundColor: defaultColor,
         title: Text(
-            'Kids Side',
+          'Kids Side',
           style: TextStyle(
-            fontFamily: 'Default',
-            fontSize: 30,
-            fontWeight: FontWeight.w700,
-            color: Colors.white
+              fontFamily: 'Default',
+              fontSize: 30,
+              fontWeight: FontWeight.w700,
+              color: Colors.white
           ),
         ),
         centerTitle: true,
@@ -130,8 +129,8 @@ class _ChildSideScreenState extends State<ChildSideScreen> {
                             color: Colors.white,
                             fontSize: 30,
                             fontWeight: FontWeight.bold,
+                          ),
                         ),
-                       ),
                       ),
                     ),
                   ],

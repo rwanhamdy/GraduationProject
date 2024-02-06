@@ -19,14 +19,12 @@ class SignUpScreen extends StatefulWidget {
 
 class _SignUpScreenState extends State<SignUpScreen> {
 
-    var emailController = TextEditingController();
-    var passwordController = TextEditingController();
-    var nameController = TextEditingController();
-    var confirmPasswordController = TextEditingController();
-    var formkey = GlobalKey<FormState>();
-    bool _IsShow =true;
-    bool _IsShowTwo =true;
-
+  var emailController = TextEditingController();
+  var passwordController = TextEditingController();
+  var nameController = TextEditingController();
+  var PhoneController = TextEditingController();
+  var formkey = GlobalKey<FormState>();
+  bool _IsShow =true;
 
   @override
   Widget build(BuildContext context) {
@@ -38,31 +36,35 @@ class _SignUpScreenState extends State<SignUpScreen> {
             key: formkey,
             child: Column(
               children: [
-                SizedBox(
-                  height: 80,
-                ),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    Text(
-                      "Sign Up",
-                      style: TextStyle(
-                        shadows: [
-                          Shadow(
-                            color: Colors.black38,
-                            offset: Offset(2.0, 2.0),
-                          ),
-                        ],
-                        fontSize: 30,
-                        fontWeight: FontWeight.bold,
-                        color: defaultColor,
-                        fontFamily: 'Default',
+                    SafeArea(
+                      child: Text(
+                        "Sign Up",
+                        style: TextStyle(
+                          // shadows: [
+                          //   Shadow(
+                          //     color: Colors.black38,
+                          //     offset: Offset(2.0, 2.0),
+                          //   ),
+                          // ],
+                          fontSize: 25,
+                          fontWeight: FontWeight.w700,
+                          color: defaultColor,
+                          fontFamily: 'Default',
+                        ),
                       ),
                     ),
                   ],
                 ),
+                Image.asset(
+                  'assets/images/Sign up-rafiki.png',
+                  width: 182,
+                  height: 182,
+                ),
                 SizedBox(
-                  height: 50,
+                  height: 12,
                 ),
                 TextFormField(
                   controller: emailController,
@@ -80,7 +82,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                   },
                   decoration: InputDecoration(
                     prefixIcon: Icon(
-                      Icons.email_outlined
+                        Icons.email_outlined
                     ),
                     labelText: 'Email',
                     hintText: ' enter your email',
@@ -88,7 +90,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                   ),
                 ),
                 SizedBox(
-                  height: 40,
+                  height: 12,
                 ),
                 TextFormField(
                   controller: nameController,
@@ -114,7 +116,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                   ),
                 ),
                 SizedBox(
-                  height: 40,
+                  height: 12,
                 ),
                 TextFormField(
                   obscureText: _IsShow,
@@ -154,15 +156,14 @@ class _SignUpScreenState extends State<SignUpScreen> {
                   ),
                 ),
                 SizedBox(
-                  height: 40,
+                  height: 12,
                 ),
                 TextFormField(
-                  obscureText: _IsShowTwo,
-                  controller: confirmPasswordController,
-                  keyboardType: TextInputType.visiblePassword,
+                  controller: PhoneController,
+                  keyboardType: TextInputType.phone,
                   validator: (value){
                     if(value!.isEmpty){
-                      return 'The Password Must Not Be Empty';
+                      return 'The phone Must Not Be Empty';
                     }
                   },
                   onFieldSubmitted: ( String value){
@@ -175,21 +176,10 @@ class _SignUpScreenState extends State<SignUpScreen> {
                   },
                   decoration: InputDecoration(
                     prefixIcon: Icon(
-                        Icons.lock
+                        Icons.phone_android,
                     ),
-                     suffixIcon: IconButton(
-                      onPressed: (){
-                        setState(() {
-                          _IsShowTwo = !_IsShowTwo;
-                        });
-                      },
-                      icon: _IsShowTwo ? Icon(
-                        Icons.visibility_off,
-                      )
-                          : Icon(Icons.visibility),
-                    ),
-                    labelText: ' Confirm Password',
-                    hintText: ' confirm your password',
+                    labelText: 'Phone Number',
+                    hintText: '+201094542564',
                     border: OutlineInputBorder(),
                   ),
                 ),
@@ -214,11 +204,27 @@ class _SignUpScreenState extends State<SignUpScreen> {
                         fontSize: 30,
                         fontWeight: FontWeight.bold,
                         fontFamily: 'Default',
-                    ),
+                      ),
                     ),
                   ),
                 ),
                 SizedBox (
+                  height: 12,
+                ),
+                Row(
+                  children: [
+                    Expanded(child: Divider(
+                      color: Colors.grey,
+                      thickness: 1.0,
+                    ),),
+                    Text("Or Continue With"),
+                    Expanded(child: Divider(
+                      color: Colors.grey,
+                      thickness: 1.0,
+                    ),),
+                  ],
+                ),
+                SizedBox(
                   height: 12,
                 ),
                 Row(
@@ -251,7 +257,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
     );
   }
 
-void _SignupAuth()async {
+  void _SignupAuth()async {
     if(formkey.currentState!.validate()){
       try {
         await FirebaseAuth.instance.createUserWithEmailAndPassword(
@@ -299,34 +305,34 @@ void _SignupAuth()async {
     }
   }
 
-void _signInWithGoogle() async {
-      // Trigger the authentication flow
-      final GoogleSignInAccount? googleUser = await GoogleSignIn().signIn();
+  void _signInWithGoogle() async {
+    // Trigger the authentication flow
+    final GoogleSignInAccount? googleUser = await GoogleSignIn().signIn();
 
-      // Obtain the auth details from the request
-      final GoogleSignInAuthentication? googleAuth = await googleUser?.authentication;
+    // Obtain the auth details from the request
+    final GoogleSignInAuthentication? googleAuth = await googleUser?.authentication;
 
-      // Create a new credential
-      final credential = GoogleAuthProvider.credential(
-        accessToken: googleAuth?.accessToken,
-        idToken: googleAuth?.idToken,
-      );
+    // Create a new credential
+    final credential = GoogleAuthProvider.credential(
+      accessToken: googleAuth?.accessToken,
+      idToken: googleAuth?.idToken,
+    );
 
-      // Once signed in, return the UserCredential
-      await FirebaseAuth.instance.signInWithCredential(credential);
-      Navigator.of(context).pushAndRemoveUntil(MaterialPageRoute(builder: (context) => HomePage()) ,(route) => false,);
-    }
+    // Once signed in, return the UserCredential
+    await FirebaseAuth.instance.signInWithCredential(credential);
+    Navigator.of(context).pushAndRemoveUntil(MaterialPageRoute(builder: (context) => HomePage()) ,(route) => false,);
+  }
 
-void _signInWithFacebook() async {
-      // Trigger the sign-in flow
-      final LoginResult loginResult = await FacebookAuth.instance.login();
+  void _signInWithFacebook() async {
+    // Trigger the sign-in flow
+    final LoginResult loginResult = await FacebookAuth.instance.login();
 
-      // Create a credential from the access token
-      final OAuthCredential facebookAuthCredential = FacebookAuthProvider.credential(loginResult.accessToken!.token);
+    // Create a credential from the access token
+    final OAuthCredential facebookAuthCredential = FacebookAuthProvider.credential(loginResult.accessToken!.token);
 
-      // Once signed in, return the UserCredential
-      await FirebaseAuth.instance.signInWithCredential(facebookAuthCredential);
+    // Once signed in, return the UserCredential
+    await FirebaseAuth.instance.signInWithCredential(facebookAuthCredential);
 
-      Navigator.of(context).pushAndRemoveUntil(MaterialPageRoute(builder: (context) => HomePage()) ,(route) => false,);
-    }
+    Navigator.of(context).pushAndRemoveUntil(MaterialPageRoute(builder: (context) => HomePage()) ,(route) => false,);
+  }
 }

@@ -12,7 +12,7 @@ import '../signup/signup_screen.dart';
 
 
 class LoginScreen extends StatefulWidget {
-   LoginScreen({super.key});
+  LoginScreen({super.key});
 
   @override
   State<LoginScreen> createState() => _LoginScreenState();
@@ -22,10 +22,10 @@ class _LoginScreenState extends State<LoginScreen> {
 
 
 
-    var formkey = GlobalKey<FormState>();
-    TextEditingController emailController = TextEditingController();
-    TextEditingController passwordController = TextEditingController();
-    bool _IsShow = true;
+  var formkey = GlobalKey<FormState>();
+  TextEditingController emailController = TextEditingController();
+  TextEditingController passwordController = TextEditingController();
+  bool _IsShow = true;
 
   @override
   Widget build(BuildContext context) {
@@ -34,60 +34,31 @@ class _LoginScreenState extends State<LoginScreen> {
     return Scaffold(
       body: SingleChildScrollView(
         child: Column(
-          children: [
+          children:[
+            SafeArea(
+              child: Text("sign in ",
+                style: TextStyle(
+                  color: defaultColor,
+                  fontSize: 24,
+                  fontWeight: FontWeight.w900
+                ),
+              ),
+            ),
+            SizedBox(height: 30,),
             Container(
-              height: 300,
-              width: double.infinity,
+              height: 149,
+              width: 218,
               decoration: BoxDecoration(
                 image: DecorationImage(
                   image: AssetImage(
-                    "assets/images/sginin.jpg",
+                    "assets/images/Login-rafiki.png",
                   ),
                   fit: BoxFit.cover,
                 ),
               ),
-              child: Padding(
-                padding: const EdgeInsets.all(10.0),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    Text(
-                      "Sign In",
-                      style: TextStyle(
-                        shadows: [
-                          Shadow(
-                            color: Colors.white,
-                            offset: Offset(1.0, 1.0),
-                          ),
-                        ],
-                        color: defaultColor,
-                        fontSize: 30,
-                        fontWeight: FontWeight.bold,
-                        fontFamily: 'Default',
-                      ),
-                    ),
-                    Text(
-                      "     Now!",
-                      style: TextStyle(
-                        shadows: [
-                          Shadow(
-                            color: Colors.white,
-                            offset: Offset(1.0, 1.0),
-                          ),
-                        ],
-                        fontSize: 30,
-                        color: defaultColor,
-                        fontWeight: FontWeight.bold,
-                        fontFamily: 'Default',
-                      ),
-                    ),
-                  ],
-                ),
-              ),
             ),
             SizedBox(
-              height: 40,
+              height: 30,
             ),
             Padding(
               padding: const EdgeInsets.all(20.0),
@@ -166,8 +137,10 @@ class _LoginScreenState extends State<LoginScreen> {
                           child: Text(
                             " Forget Password ?",
                             style: TextStyle(
-                                color: Colors.black,
-                                fontFamily: 'Default',
+                              decoration: TextDecoration.underline,
+                              decorationColor: defaultColor,
+                              color:defaultColor,
+                              fontFamily: 'Default',
                             ),
                           ),
                         ),
@@ -193,6 +166,48 @@ class _LoginScreenState extends State<LoginScreen> {
                             fontWeight: FontWeight.bold),),
                       ),
                     ),
+                    SizedBox(height: 12,),
+                    Row(
+                      children: [
+                        Expanded(child: Divider(
+                          color: Colors.grey,
+                          thickness: 1.0,
+                        ),),
+                        Text("Or Continue With"),
+                        Expanded(child: Divider(
+                          color: Colors.grey,
+                          thickness: 1.0,
+                        ),),
+                      ],
+                    ),
+                    SizedBox(height: 8,),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        IconButton(
+                            onPressed: () {
+                              _signInWithFacebook();
+                            },
+                            icon:
+                            IconIcons.facebook(
+                              width: 40.0,
+                              height: 40.0,
+                            )
+                        ),
+                        SizedBox(
+                          width: 12,
+                        ),
+                        TextButton(
+                          onPressed: () {
+                            _signInWithGoogle();
+                          },
+                          child: Image.asset("assets/images/GoogleIcon.png",width: 40,height: 40,),
+                        ),
+                      ],
+                    ),
+                    SizedBox(
+                      height: 12,
+                    ),
                     Row(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
@@ -205,36 +220,9 @@ class _LoginScreenState extends State<LoginScreen> {
                           child: Text(
                             "Register now",
                             style: TextStyle(
-                              color: Colors.red,
+                              color:defaultColor,
                             ),
                           ),
-                        ),
-                      ],
-                    ),
-                    SizedBox(
-                      height: 12,
-                    ),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        IconButton(
-                            onPressed: () {
-                              _signInWithFacebook();
-                            },
-                            icon:
-                            IconIcons.facebook(
-                              width: 50.0,
-                              height: 50.0,
-                            )
-                        ),
-                        SizedBox(
-                          width: 12,
-                        ),
-                        TextButton(
-                          onPressed: () {
-                            _signInWithGoogle();
-                          },
-                          child: Image.asset("assets/images/GoogleIcon.png"),
                         ),
                       ],
                     ),
@@ -249,14 +237,14 @@ class _LoginScreenState extends State<LoginScreen> {
   }
 
 //Firebase Space
-void _SigninAuth() async {
+  void _SigninAuth() async {
     if(formkey.currentState!.validate()){
       try {
         var credential = await FirebaseAuth
             .instance
             .signInWithEmailAndPassword(
-            email: emailController.text.trim(),
-            password: passwordController.text,
+          email: emailController.text.trim(),
+          password: passwordController.text,
         );
         if(credential.user!.emailVerified){
           Fluttertoast.showToast(
@@ -316,9 +304,9 @@ void _SigninAuth() async {
         );
       }
     }
-}
+  }
 
-void _signInWithGoogle() async {
+  void _signInWithGoogle() async {
     // Trigger the authentication flow
     final GoogleSignInAccount? googleUser = await GoogleSignIn().signIn();
 
@@ -326,7 +314,7 @@ void _signInWithGoogle() async {
     final GoogleSignInAuthentication? googleAuth = await googleUser?.authentication;
 
     if(googleUser == null){
-    return;
+      return;
     }
 
     // Create a new credential
@@ -336,11 +324,11 @@ void _signInWithGoogle() async {
     );
 
     // Once signed in, return the UserCredential
-     await FirebaseAuth.instance.signInWithCredential(credential);
+    await FirebaseAuth.instance.signInWithCredential(credential);
     Navigator.of(context).pushAndRemoveUntil(MaterialPageRoute(builder: (context) => HomePage()) ,(route) => false,);
   }
 
-void _signInWithFacebook() async {
+  void _signInWithFacebook() async {
     // Trigger the sign-in flow
     final LoginResult loginResult = await FacebookAuth.instance.login();
 
@@ -348,7 +336,7 @@ void _signInWithFacebook() async {
     final OAuthCredential facebookAuthCredential = FacebookAuthProvider.credential(loginResult.accessToken!.token);
 
     // Once signed in, return the UserCredential
-     await FirebaseAuth.instance.signInWithCredential(facebookAuthCredential);
+    await FirebaseAuth.instance.signInWithCredential(facebookAuthCredential);
 
     Navigator.of(context).pushAndRemoveUntil(MaterialPageRoute(builder: (context) => HomePage()) ,(route) => false,);
   }

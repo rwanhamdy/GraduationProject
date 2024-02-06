@@ -22,7 +22,7 @@ class ChooseScreen extends StatelessWidget {
                 child: Column(
                   children: [
                     Text(
-                      "Choose your ",
+                      "Choose your agent",
                       style: TextStyle(
                         color: defaultColor,
                         fontSize: 35,
@@ -30,15 +30,7 @@ class ChooseScreen extends StatelessWidget {
                         fontFamily: 'Default',
                       ),
                     ),
-                    Text(
-                      "agent ",
-                      style: TextStyle(
-                        color: defaultColor,
-                        fontSize: 35,
-                        fontWeight: FontWeight.bold,
-                        fontFamily: 'Default',
-                    ),
-                    ),
+
                   ],
                 ),
               ),
@@ -47,7 +39,7 @@ class ChooseScreen extends StatelessWidget {
               ),
               InkWell(
                 onTap: (){
-                  navigateAndFinish(context,  LoginScreen(),);
+                  navigateTo(context, LoginScreen(),);
                 },
                 child: Container(
                   decoration: BoxDecoration(
@@ -90,7 +82,7 @@ class ChooseScreen extends StatelessWidget {
               ),
               InkWell(
                 onTap: (){
-                  navigateAndFinish(context, const ChildSideScreen(),);
+                  navigateTo(context, ChildSideScreen(),);
                 },
                 child: Container(
                   decoration: BoxDecoration(
@@ -103,7 +95,7 @@ class ChooseScreen extends StatelessWidget {
                     children: [
                       Center(
                         child: Text(
-                          "Child phone",
+                          "Kid phone",
                           style: TextStyle(
                             color: Colors.white,
                             fontSize: 25,
