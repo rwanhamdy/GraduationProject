@@ -20,19 +20,7 @@ class _ChildSideScreenState extends State<ChildSideScreen> {
   Widget build(BuildContext context) {
 
     return Scaffold(
-      appBar: AppBar(
-        backgroundColor: defaultColor,
-        title: Text(
-          'Kids Side',
-          style: TextStyle(
-              fontFamily: 'Default',
-              fontSize: 30,
-              fontWeight: FontWeight.w700,
-              color: Colors.white
-          ),
-        ),
-        centerTitle: true,
-      ),
+
       body: Center(
         child: Padding(
           padding: const EdgeInsets.all(8.0),
@@ -47,6 +35,20 @@ class _ChildSideScreenState extends State<ChildSideScreen> {
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
+                    SafeArea(
+                      child: Text("Kids side ",
+                        style: TextStyle(
+                            color: defaultColor,
+                            fontSize: 24,
+                            fontWeight: FontWeight.w900
+                        ),
+                      ),
+                    ),
+                    Center(
+                      child: Container(
+                          height: 220,
+                          child: Image.asset("assets/images/Flying kite-amico.png")),
+                    ),
                     TextFormField(
                       controller: usernameController,
                       keyboardType: TextInputType.visiblePassword,
@@ -67,7 +69,7 @@ class _ChildSideScreenState extends State<ChildSideScreen> {
                         border: OutlineInputBorder(),
                       ),
                     ),
-                    SizedBox(height: 30,),
+                    SizedBox(height: 12,),
                     TextFormField(
                       controller: idController,
                       keyboardType: TextInputType.visiblePassword,
@@ -88,7 +90,7 @@ class _ChildSideScreenState extends State<ChildSideScreen> {
                         border: OutlineInputBorder(),
                       ),
                     ),
-                    SizedBox(height: 24,),
+                    SizedBox(height: 25,),
                     Container(
                       width: 300,
                       height: 43,

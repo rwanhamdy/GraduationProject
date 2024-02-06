@@ -32,21 +32,18 @@ class _ForgetPasswordState extends State<ForgetPassword> {
             child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Text(
-                  'Reset Your',
-                  style: TextStyle(
-                    fontSize: 35,
-                    fontWeight: FontWeight.w900,
-                    color: defaultColor,
-                  ),
-                ),
-                Text(
-                  'Password',
-                  style: TextStyle(
-                    fontSize: 35,
-                    fontWeight: FontWeight.w900,
-                    color: defaultColor,
-                  ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Text(
+                      'Reset Your Password',
+                      style: TextStyle(
+                        fontSize: 30,
+                        fontWeight: FontWeight.w900,
+                        color: defaultColor,
+                      ),
+                    ),
+                  ],
                 ),
                 Center(
                   child: Container(

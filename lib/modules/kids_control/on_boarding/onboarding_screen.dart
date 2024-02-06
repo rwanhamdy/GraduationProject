@@ -23,23 +23,23 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
   List<BoardingModel> boarding = [
     BoardingModel(
       image: 'assets/images/Kids playing with car toys-rafiki.png',
-      title1: "Protect Your Child From Addition!",
-      title2: '',
+      title1: "Protect Your Child From",
+      title2: ' Addition!',
 
 
 
     ),
     BoardingModel(
       image: 'assets/images/Going offline-amico.png',
-      title1: 'Provide Your Child A Safe Digital Experience....',
-      title2: '',
+      title1: 'Provide Your Child A Safe ',
+      title2: 'Digital Experience....',
 
 
     ),
     BoardingModel(
       image: 'assets/images/Parents-rafiki.png',
-      title1: "Help you set dos and don'ts for their online word...",
-      title2: '',
+      title1: "Help you set dos and don'ts for ",
+      title2: 'their online word...',
 
 
 
@@ -49,22 +49,25 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: PageView.builder(
-        physics: const BouncingScrollPhysics(),
-        controller:broadController ,
-        onPageChanged:(int index) {
-          if(index == boarding.length-1)
-            {
-              setState(() {
-                isLast = true;
-              });
+      body: Padding(
+        padding: const EdgeInsets.all(15.0),
+        child: PageView.builder(
+          physics: const BouncingScrollPhysics(),
+          controller:broadController ,
+          onPageChanged:(int index) {
+            if(index == boarding.length-1)
+              {
+                setState(() {
+                  isLast = true;
+                });
+              }
+            else{
+              isLast = false;
             }
-          else{
-            isLast = false;
-          }
-        },
-        itemBuilder: (context, index) => builderBroadingItem(boarding[index]),
-          itemCount: boarding.length,),
+          },
+          itemBuilder: (context, index) => builderBroadingItem(boarding[index]),
+            itemCount: boarding.length,),
+      ),
 
       );
   }
@@ -82,21 +85,31 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
                height: 300,
                child: Image.asset(model.image),
              ),
-             Text('${model.title1}',
-               style: const TextStyle(
-                 color: defaultColor,
-                 fontWeight: FontWeight.bold,
-                 fontSize: 30,
-                 fontFamily: 'Default',
-               ),
+             Row(
+               mainAxisAlignment: MainAxisAlignment.center,
+               children: [
+                 Text('${model.title1}',
+                   style: const TextStyle(
+                     color: defaultColor,
+                     fontWeight: FontWeight.bold,
+                     fontSize: 30,
+                     fontFamily: 'Default',
+                   ),
+                 ),
+               ],
              ),
-             Text('${model.title2}',
-               style: const TextStyle(
-                 color: defaultColor,
-                 fontWeight: FontWeight.bold,
-                 fontSize: 20,
-                 fontFamily: 'Default',
-               ),
+             Row(
+               mainAxisAlignment: MainAxisAlignment.center,
+               children: [
+                 Text('${model.title2}',
+                   style: const TextStyle(
+                     color: defaultColor,
+                     fontWeight: FontWeight.bold,
+                     fontSize: 20,
+                     fontFamily: 'Default',
+                   ),
+                 ),
+               ],
              ),
            ],
          ),

@@ -8,7 +8,7 @@ import 'package:graduation1/modules/kids_control/login/login_screen.dart';
 import 'package:graduation1/shared/styles/colors.dart';
 import 'package:icon_icons/icon_icons.dart';
 
-import '../../../shared/componants/componants.dart';
+
 
 class SignUpScreen extends StatefulWidget {
   const SignUpScreen({super.key});
@@ -184,7 +184,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                   ),
                 ),
                 SizedBox(
-                  height: 50,
+                  height: 40,
                 ),
                 Container(
                   width: 300,
@@ -198,10 +198,10 @@ class _SignUpScreenState extends State<SignUpScreen> {
                       _SignupAuth();
                     },
                     child: Text(
-                      'SignUp',
+                      'Sign Up',
                       style: TextStyle(
                         color: Colors.white,
-                        fontSize: 30,
+                        fontSize: 25,
                         fontWeight: FontWeight.bold,
                         fontFamily: 'Default',
                       ),

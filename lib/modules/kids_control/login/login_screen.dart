@@ -147,7 +147,7 @@ class _LoginScreenState extends State<LoginScreen> {
                       ],
                     ),
                     SizedBox(
-                      height: 40,
+                      height: 30,
                     ),
                     Container(
                       width: 300,
@@ -160,7 +160,7 @@ class _LoginScreenState extends State<LoginScreen> {
                         onPressed: (){
                           _SigninAuth();
                         },
-                        child: Text('SignIn',style: TextStyle(
+                        child: Text('Sign In',style: TextStyle(
                             color: Colors.white,
                             fontSize: 30,
                             fontWeight: FontWeight.bold),),

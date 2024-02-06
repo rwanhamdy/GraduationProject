@@ -2,6 +2,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:graduation1/modules/kids_control/on_boarding/onboarding_screen.dart';
+import 'package:graduation1/shared/styles/colors.dart';
 import 'modules/kids_control/homeexample.dart';
 
 
@@ -62,7 +63,7 @@ class _SplachState extends State<Splach> {
             ),
             const Text("Kids Control",
             style: TextStyle(
-              color: Colors.black,
+              color:defaultColor,
               fontSize: 35,
               fontWeight:FontWeight.bold,
               fontFamily: 'Default',

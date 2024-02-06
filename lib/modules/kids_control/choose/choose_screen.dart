@@ -25,7 +25,7 @@ class ChooseScreen extends StatelessWidget {
                       "Choose your agent",
                       style: TextStyle(
                         color: defaultColor,
-                        fontSize: 35,
+                        fontSize: 30,
                         fontWeight: FontWeight.bold,
                         fontFamily: 'Default',
                       ),
