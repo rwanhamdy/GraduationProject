@@ -29,6 +29,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(),
       body: SingleChildScrollView(
         child: Padding(
           padding: const EdgeInsets.all(20.0),
@@ -236,8 +237,8 @@ class _SignUpScreenState extends State<SignUpScreen> {
                         },
                         icon:
                         IconIcons.facebook(
-                          width: 50.0,
-                          height: 50.0,
+                          width: 40.0,
+                          height: 40.0,
                         )
                     ),
                     SizedBox(width: 12,),
@@ -245,7 +246,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                       onPressed: () {
                         _signInWithGoogle();
                       },
-                      child: Image.asset("assets/images/GoogleIcon.png"),
+                      child: Image.asset("assets/images/GoogleIcon.png",width: 40,height: 40,),
                     ),
                   ],
                 ),

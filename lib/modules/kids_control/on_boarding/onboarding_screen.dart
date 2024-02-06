@@ -92,7 +92,7 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
                    style: const TextStyle(
                      color: defaultColor,
                      fontWeight: FontWeight.bold,
-                     fontSize: 30,
+                     fontSize: 16,
                      fontFamily: 'Default',
                    ),
                  ),

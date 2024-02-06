@@ -29,9 +29,8 @@ class _LoginScreenState extends State<LoginScreen> {
 
   @override
   Widget build(BuildContext context) {
-
-
     return Scaffold(
+      appBar: AppBar(backgroundColor: Colors.white,),
       body: SingleChildScrollView(
         child: Column(
           children:[
@@ -215,7 +214,7 @@ class _LoginScreenState extends State<LoginScreen> {
                           "Don't have account ?",
                         ),
                         TextButton(onPressed: () {
-                          navigateTo(context, SignUpScreen(),);
+                          Navigator.of(context).push(MaterialPageRoute(builder: (context)=> SignUpScreen()));
                         },
                           child: Text(
                             "Register now",

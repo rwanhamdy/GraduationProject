@@ -1,6 +1,7 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:google_sign_in/google_sign_in.dart';
 import 'package:graduation1/main.dart';
 import 'package:graduation1/modules/kids_control/login/login_screen.dart';
 import '../../shared/componants/componants.dart';
@@ -21,7 +22,9 @@ class _HomePageState extends State<HomePage> {
           IconButton(
               onPressed: ()async {
                 await FirebaseAuth.instance.signOut();
-                navigateTo(context, LoginScreen(),);
+                GoogleSignIn googlesignin = GoogleSignIn();
+                googlesignin.disconnect();
+                Navigator.of(context).pushAndRemoveUntil(MaterialPageRoute(builder: (context) => LoginScreen()), (route) => false);
               },
               icon: Icon(FontAwesomeIcons.signOut),
           ),
